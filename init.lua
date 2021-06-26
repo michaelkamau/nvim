@@ -1,5 +1,7 @@
 require('lv-globals')
 vim.cmd('luafile '..CONFIG_PATH..'/lv-settings.lua')
+
+
 require('settings')
 require('lv-gitblame')
 require('lv-matchup')
@@ -11,7 +13,6 @@ require('lv-nvimtree') -- This plugin must be required somewhere before colorsch
 require('colorscheme') -- This plugin must be required somewhere after nvimtree. Placing it before will break navigation keymappings
 require('lv-galaxyline')
 require('lv-comment')
-require('lv-gitblame')
 require('lv-compe')
 require('lv-barbar')
 require('lv-dashboard')
@@ -30,16 +31,17 @@ if O.extras then
     require('lv-dial')
     require('lv-hop')
     require('lv-colorizer')
+    require('lv-spectre')
     require('lv-symbols-outline')
+    require('lv-vimtex')
 end
-
-
 
 -- TODO is there a way to do this without vimscript
 vim.cmd('source '..CONFIG_PATH..'/vimscript/functions.vim')
 
 -- LSP
 require('lsp')
+require('lsp.java-ls')
 require('lsp.angular-ls')
 require('lsp.bash-ls')
 require('lsp.clangd')
