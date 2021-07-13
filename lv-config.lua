@@ -1,74 +1,70 @@
---[[
-O is the global options object
+-- O is the global options object
 
-Formatters and linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
-
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
-O.auto_complete = true
-O.colorscheme = 'lunar'
-O.auto_close_tree = 0
-O.wrap_lines = false
-O.timeoutlen = 100
-O.document_highlight = true
-O.extras = true
+-- O.default_options.wrap = true -- wrap long lines
+O.completion.autocomplete = true
+O.default_options.relativenumber = true
+O.colorscheme = 'spacegray'
+O.default_options.timeoutlen = 100
 O.leader_key = ' '
 
--- dashboard
--- O.dashboard.custom_header = {""}
--- O.dashboard.footer = {""}
+-- After changing plugin config it is recommended to run :PackerCompile
+O.plugin.dashboard.active = true
+O.plugin.floatterm.active = true
+O.plugin.zen.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 
-
-O.clang.diagnostics.virtual_text = false
-O.clang.diagnostics.signs = false
-O.clang.diagnostics.underline = false
-
--- python
--- add things like O.python.formatter.yapf.exec_path
--- add things like O.python.linter.flake8.exec_path
--- add things like O.python.formatter.isort.exec_path
-O.python.formatter = 'yapf'
--- O.python.linter = 'flake8'
-O.python.isort = true
-O.python.autoformat = true
-O.python.diagnostics.virtual_text = true
-O.python.diagnostics.signs = true
-O.python.diagnostics.underline = true
-O.python.analysis.type_checking = "off"
-O.python.analysis.auto_search_paths = true
-O.python.analysis.use_library_code_types = true
-
 -- lua
--- TODO look into stylua
-O.lua.formatter = 'lua-format'
--- O.lua.formatter = 'lua-format'
-O.lua.autoformat = false
+O.lang.lua.autoformat = false
+O.lang.lua.formatter = 'lua-format'
 
 -- javascript
-O.tsserver.formatter = 'prettier'
-O.tsserver.linter = nil
-O.tsserver.autoformat = true
+O.lang.tsserver.formatter = 'prettier'
+O.lang.tsserver.linter = nil
+O.lang.tsserver.autoformat = true
 
--- json
-O.json.autoformat = true
-
--- ruby
-O.ruby.autoformat = true
+-- python
+O.lang.python.isort = true
+O.lang.python.diagnostics.virtual_text = true
+O.lang.python.analysis.use_library_code_types = true
+-- to change default formatter from yapf to black
+-- O.lang.python.formatter.exe = "black"
+-- O.lang.python.formatter.args = {"-"}
 
 -- go
-O.go.autoformat = true
--- create custom autocommand field (This would be easy with lua)
+-- to change default formatter from gofmt to goimports
+-- O.lang.formatter.go.exe = "goimports"
 
--- Turn off relative_numbers
--- O.relative_number = false
+-- Additional Plugins
+-- O.user_plugins = {
+--   {"folke/tokyonight.nvim"},
+--   {
+--     "ray-x/lsp_signature.nvim",
+--     config = function()
+--       require"lsp_signature".on_attach()
+--     end,
+--     event = "InsertEnter"
+--   },
+-- }
 
--- Turn off cursorline
--- O.cursorline = false
+-- }
+
+-- Autocommands (https://neovim.io/doc/user/autocmd.html)
+-- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
+
+-- Additional Leader bindings for WhichKey
+-- O.user_which_key = {
+--   A = {
+--     name = "+Custom Leader Keys",
+--     a = { "<cmd>echo 'first custom command'<cr>", "Description for a" },
+--     b = { "<cmd>echo 'second custom command'<cr>", "Description for b" },
+--   },
+-- }
+
+-- To link your init.vim (until you find Lua replacements)
+-- vim.cmd('source ' .. CONFIG_PATH .. '/lua/lv-user/init.vim')
